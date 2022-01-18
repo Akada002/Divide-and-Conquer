@@ -1,51 +1,40 @@
-A = [22,23, 26, 40, 56, 80,100,189]
-B = [2, 19, 48, 54,55, 66]
-C = []
 
-def Merge_Sort(A, B):
-  i=j=0
-  while i < len(A) and j < len(B):
-    if A[i] <= B[j]:
-      C.append(A[i])
-      i += 1
+def merge_sort(arr):
+  if len(arr)<=1:
+    return arr
+    
+  mid = len(arr)//2
+  left = arr[:mid]
+  right = arr[mid:]
 
-    else:
-      C.append(B[j])
-      j += 1
-  while i< len(A):
-    C.append(A[i])
-    i+=1
-  while j< len(B):
-    C.append(B[j])
-    j+=1
-  
-  return C
+  merge_sort(left)
+  merge_sort(right)
 
-
-print(Merge_Sort(A, B))
-
-________________________________________________
-
-def merge_sort(a,b):
-  sorted_list=[]
-  i=j=0
-
-  while i<len(a) and j<len(b):
-    if a[i]>= b[j]:
-      sorted_list.append(a[i])
+  return Merge_sort_two_array(left, right, arr)
+def Merge_sort_two_array(A,B, arr):
+  a=len(A)
+  b=len(B)
+  i=j=k=0
+  sorted_array=[]
+  while i<a and j<b:
+    if A[i]<B[j]:
+      arr[k]=A[i]
       i+=1
     else:
-      sorted_list.append(b[j])
-  while i< len(a):
-    sorted_list.append(a[i])
+      arr[k]=B[j]
+      j+=1
+    k+=1
+  while i<a:
+    sorted_array.append(A[i])
     i+=1
-  while j< len(b):
-    sorted_list.append(b[j])
+    k+=1
+  while j<b:
+    sorted_array.append(B[j])
     j+=1
-  return sorted_list
+    k+=1
 
-if __name__ == '__main__':
-  a=[5,8,12,56]
-  b=[7,9,45,51]
 
-  print(merge_sort(a,b))
+if __name__ == "__main__":
+  Arr=[29,2,40,3,50,47,23,98,80,100,189]
+  merge_sort(Arr)
+  print(Arr)
