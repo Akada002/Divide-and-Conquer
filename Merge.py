@@ -1,7 +1,6 @@
-A = [22, 26, 40, 56, 80]
-B = [2, 19, 48, 54, 66]
+A = [22,23, 26, 40, 56, 80,100,189]
+B = [2, 19, 48, 54,55, 66]
 C = []
-
 
 def Merge_Sort(A, B):
   i=j=0
@@ -9,10 +8,20 @@ def Merge_Sort(A, B):
     if A[i] <= B[j]:
       C.append(A[i])
       i += 1
+
     else:
       C.append(B[j])
       j += 1
+  while i< len(A):
+    C.append(A[i])
+    i+=1
+  while j< len(B):
+    C.append(B[j])
+    j+=1
+  
   return C
+
+
 print(Merge_Sort(A, B))
 
 ________________________________________________
@@ -27,6 +36,12 @@ def merge_sort(a,b):
       i+=1
     else:
       sorted_list.append(b[j])
+  while i< len(a):
+    sorted_list.append(a[i])
+    i+=1
+  while j< len(b):
+    sorted_list.append(b[j])
+    j+=1
   return sorted_list
 
 if __name__ == '__main__':
